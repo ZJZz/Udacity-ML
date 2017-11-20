@@ -11803,7 +11803,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 载入此项目所需要的库</span>
@@ -11827,7 +11827,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># 载入波士顿房屋的数据集</span>
@@ -11894,25 +11894,26 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#TODO 1</span>
 
 <span class="c1">#目标：计算价值的最小值</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">npformat</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">values</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">npformat</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的最大值</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">npformat</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的平均值</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">npformat</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的中值</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">npformat</span><span class="p">)</span>
 
 <span class="c1">#目标：计算价值的标准差</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">npformat</span><span class="p">)</span>
 
 <span class="c1">#目标：输出计算的结果</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11943,7 +11944,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -13726,7 +13727,7 @@ fTi5vIEAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-5---&#22238;&#31572;:">&#38382;&#39064; 5 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-5---&#22238;&#31572;:">&#182;</a></h3><p>也许出现了很大的方差吧，但是感觉也不是很大。首先不是偏差，因为训练集和测试集的差距很小。排除的话只能是出现方差。但是看验证集的不确定性范围也不是很大，<strong>所以不确定性可以看作衡量方差的方法吗？</strong></p>
+<h3 id="&#38382;&#39064;-5---&#22238;&#31572;:">&#38382;&#39064; 5 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-5---&#22238;&#31572;:">&#182;</a></h3><p>在最大深度为1时，R<sup>2</sup>分数很低，偏差很大。(这个问题不是很确定,只是因为这一个原因吗？)</p>
 
 </div>
 </div>
@@ -13771,7 +13772,9 @@ fTi5vIEAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-7---&#22238;&#31572;:">&#38382;&#39064; 7 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-7---&#22238;&#31572;:">&#182;</a></h3><p>通过遍历参数的各种组合来寻找最优参数，减少了人工调参的工作量。</p>
+<h3 id="&#38382;&#39064;-7---&#22238;&#31572;:">&#38382;&#39064; 7 - &#22238;&#31572;:<a class="anchor-link" href="#&#38382;&#39064;-7---&#22238;&#31572;:">&#182;</a></h3><p>通过遍历参数的给定参数的取值组合来寻找最优参数，减少了人工调参的工作量。</p>
+<p>网格由给定参数下的可能取值的组合组成。</p>
+<p>通过指定评分函数如R<sup>2</sup>等来进行所有参数组合的评分。</p>
 
 </div>
 </div>
@@ -13795,10 +13798,10 @@ fTi5vIEAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#38382;&#39064; 8 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#182;</a></h3><p>1.将数据平均分为k个块，选其中的1块作为测试集，剩下的k-1块作为训练集。然后再从没有选为测试集的块中再选1块作为测试集，剩下的k-1块作为训练集。以此类推重复k次。最后将测试的结果取k平均，则为测试结果。</p>
+<h3 id="&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#38382;&#39064; 8 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-8---&#22238;&#31572;&#65306;">&#182;</a></h3><p>1.将<strong>所有</strong>数据平均分为k个块，默认情况下是按顺序切分。选其中的m块作为测试集，剩下的k-m块作为训练集。然后再从没有选为测试集的块中再选m块作为测试集，剩下的k-m块作为训练集。以此类推重复k次。最后将测试的结果取k平均，则为测试结果。</p>
 <p>2.我的理解是：首先将要优化的参数所有可能取值列出，生成参数网格。然后配合交叉验证法去划分测试集和训练集，训练后返回最佳的参数组合。</p>
 <p>3.告诉我们网格交叉验证法的结果得分和一些统计信息。</p>
-<p>4.我猜是不一定能得到得分最高的参数组合。交叉验证通过尝试所有数据划分为测试集和训练集，来提高模型的学习能力。</p>
+<p>4.不使用交叉验证法会会引起数据使用不充分，对数据的特征学习不够，导致欠拟合问题。交叉验证通过将数据分成相互独立的部分，每一块都会成为训练集或数据集，可充分利用有限数据，学习数据的特征。</p>
 
 </div>
 </div>
@@ -14058,9 +14061,9 @@ Predicted selling price for Client 3&#39;s home: $931,636.36
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-10---&#22238;&#31572;&#65306;">&#38382;&#39064; 10 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-10---&#22238;&#31572;&#65306;">&#182;</a></h3><h4 id="&#23458;&#25143;1&#65306;$403,025.00">&#23458;&#25143;1&#65306;$403,025.00<a class="anchor-link" href="#&#23458;&#25143;1&#65306;$403,025.00">&#182;</a></h4><p>合理，房间数较多，社区贫困指数较少，说明基础设施和人文环境较好，学生较多，说明流动人口较多，房间定价合理。</p>
-<h4 id="&#23458;&#25143;2&#65306;$237,478.72">&#23458;&#25143;2&#65306;$237,478.72<a class="anchor-link" href="#&#23458;&#25143;2&#65306;$237,478.72">&#182;</a></h4><p>合理，房间常规，但社区贫困指数较多，安全性和人文环境较差，学生很多，流动人口大，定价合理。</p>
-<h4 id="&#23458;&#25143;3&#65306;$931,636.36">&#23458;&#25143;3&#65306;$931,636.36<a class="anchor-link" href="#&#23458;&#25143;3&#65306;$931,636.36">&#182;</a></h4><p>合理，房间很多，社区贫困指数较少，说明社区收入大都为中上阶层，人文环境较好，学生较少，流动人口少，拥有自己的房子的业主较多，定价合理。</p>
+<h3 id="&#38382;&#39064;-10---&#22238;&#31572;&#65306;">&#38382;&#39064; 10 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-10---&#22238;&#31572;&#65306;">&#182;</a></h3><h4 id="&#23458;&#25143;1&#65306;$403,025.00">&#23458;&#25143;1&#65306;$403,025.00<a class="anchor-link" href="#&#23458;&#25143;1&#65306;$403,025.00">&#182;</a></h4><p>合理。处于最大值和最小值之间，低于平均价格$454,342.94附近。房间数较多，社区贫困指数较少，说明基础设施和人文环境较好，学生较多，说明流动人口较多，房间定价合理。</p>
+<h4 id="&#23458;&#25143;2&#65306;$237,478.72">&#23458;&#25143;2&#65306;$237,478.72<a class="anchor-link" href="#&#23458;&#25143;2&#65306;$237,478.72">&#182;</a></h4><p>合理。处于最大值和最小值之间，远低于平均价格，因社区贫困指数较多，安全性和人文环境较差，学生很多，流动人口大，定价合理。</p>
+<h4 id="&#23458;&#25143;3&#65306;$931,636.36">&#23458;&#25143;3&#65306;$931,636.36<a class="anchor-link" href="#&#23458;&#25143;3&#65306;$931,636.36">&#182;</a></h4><p>合理，处于最大值和最小值之间，远高于平均价格，因房间很多，社区贫困指数较少，说明社区收入大都为中上阶层，人文环境较好，学生较少，流动人口少，拥有自己的房子的业主较多，定价合理。</p>
 
 </div>
 </div>
@@ -14216,7 +14219,7 @@ Range in prices: $28,652.84
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="&#38382;&#39064;-13---&#22238;&#31572;&#65306;">&#38382;&#39064; 13 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-13---&#22238;&#31572;&#65306;">&#182;</a></h3><p>1.不适用。通货膨胀下的价格与现在的价格相差很大，也就是不同时间段的测数集相差就很大。
+<h3 id="&#38382;&#39064;-13---&#22238;&#31572;&#65306;">&#38382;&#39064; 13 - &#22238;&#31572;&#65306;<a class="anchor-link" href="#&#38382;&#39064;-13---&#22238;&#31572;&#65306;">&#182;</a></h3><p>1.可以。MEDV特征的值已经过必要的数学转换，可以反映35年来市场的通货膨胀效应
 2.不够。住房面积，供暖，是否朝阳面等需人加入特征。
 3.不适用。大都市的人群需求和乡镇的需求不同，周围的环境也不同。
 4.不合理，房价还应考虑周围自然环境，人文环境，基础设施建设程度，交通，教育等各方面因素。</p>
