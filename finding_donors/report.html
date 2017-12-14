@@ -12981,16 +12981,16 @@ Testing set has 9045 samples.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1">#不能使用scikit-learn，你需要根据公式自己实现相关计算。</span>
 
 <span class="c1">#TODO： 计算准确率</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="mi">1</span><span class="o">-</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="n">TP</span> <span class="o">=</span> <span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<span class="n">FP</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">TP</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">FP</span> <span class="o">=</span> <span class="n">y_val</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y_val</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">FN</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="c1"># TODO： 计算查准率 Precision</span>
@@ -13024,13 +13024,11 @@ Testing set has 9045 samples.
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>5443
-1793
-Naive Predictor on validation data: 
-     Accuracy score: 0.7522 
-     Precision: 0.7522 
+<pre>Naive Predictor on validation data: 
+     Accuracy score: 0.2478 
+     Precision: 0.2478 
      Recall: 1.0000 
-     F-score: 0.7914
+     F-score: 0.2917
 </pre>
 </div>
 </div>
@@ -13068,11 +13066,11 @@ Naive Predictor on validation data:
 <p>回答：可以对车载LiDAR点云包含的地物进行分类。首先对车载激光点云进行数据预处理，然后计算点云的协方差矩阵、密度比、高程相关特征、局部平面特征、投影特征等，再计算点云特征直方图与垂直分布直方图，采用K-means方法对这两者分别进行聚类，并将其聚类类别值也作为特征，从而构建出20维的点云特征向量，应用Gradient Boosting分类方法进行自动分类。
                             《基于Gradient Boosting的车载LiDAR点云分类》--赵刚，杨必胜 《地理信息世界》 , 2016 , 23 (3) :47-52</p>
 <p><strong>这个模型的优势是什么？他什么情况下表现最好？</strong></p>
-<p>回答：训练速度快.当每棵树的深度较浅时效果比较好。<em>第二问没有查到很好的资料，希望给出参考链接，谢谢！</em></p>
+<p>回答：参数设置简单；当每棵树的深度较浅时效果比较好；不容易过拟合；当数据量较大时表现较好。</p>
 <p><strong>这个模型的缺点是什么？什么条件下它表现很差？</strong></p>
-<p>回答：当迭代次数过多时，容易产生过拟合。当每颗树的深度较深时，容易过拟合。<em>第二问没有查到很好的资料，希望给出参考链接，谢谢！</em></p>
+<p>回答：训练时间较长；消耗内存较大。依赖于弱学习器的表现，如果弱学习器表现较差，那总体效果也较差。</p>
 <p><strong>根据我们当前数据集的特点，为什么这个模型适合这个问题。</strong></p>
-<p>回答： 只是听说GB效果比较好，不知道什么样的数据特点适用。<em>这一问回答的不是很满意，也没找到很好的资料，希望给出参考链接，谢谢！</em></p>
+<p>回答： 分类效果较好，适用特征数较多的情况，调参简单。</p>
 
 </div>
 </div>
@@ -13086,11 +13084,11 @@ Naive Predictor on validation data:
 <p><strong>描述一个该模型在真实世界的一个应用场景。（你需要为此做点研究，并给出你的引用出处）</strong></p>
 <p>回答：为了提高疲劳检测的精度,通过驾驶模拟试验采集了15位中青年有经验驾驶员的车辆横向位置、方向盘操控、眼动等多源数据并计算疲劳特征指标,同时采集驾驶员主观疲劳程度并通过视频回放进行校核,在此基础上建立疲劳等级与特征指标的决策树模型,结果表明,对于区别疲劳等级最显著的变量有闭眼时间比例(percentage of eye closure,PERCLOS)、车道偏移标准差、越线时空面积、方向盘反转率,且上述变量与疲劳等级呈正相关;PERCLOS为最优的疲劳等级划分变量,并获取了2个重要阈值:当PERCLOS小于2.8%时,驾驶员处于严重疲劳状态的比例为零;当PERCLOS大于21.9%时,驾驶员处于未疲劳状态的比例为零;该模型预测的总正确率为64.31%.为了校验模型,从15位驾驶员中随机选取了4位进行模型校验试验.校核结果表明该模型的正确率达63.22%.模型在2次试验中都未发现将严重疲劳识别为未疲劳的情况. 《基于决策树的驾驶疲劳等级分析与判定》--胥川 《同济大学学报》</p>
 <p><strong>这个模型的优势是什么？他什么情况下表现最好？</strong></p>
-<p>回答：1.可解释性强 2.非参数型。<em>第二问没有查到很好的资料，希望给出参考链接，谢谢！</em></p>
+<p>回答：1.可解释性强 2.易调参。当数据集的特征相互没有关联时表现最好</p>
 <p><strong>这个模型的缺点是什么？什么条件下它表现很差？</strong></p>
-<p>回答：1.趋向过拟合 2.可能或陷于局部最小值中。<em>第二问没有查到很好的资料，希望给出参考链接，谢谢！</em></p>
+<p>回答：1.趋向过拟合 2.内存消耗较大</p>
 <p><strong>根据我们当前数据集的特点，为什么这个模型适合这个问题。</strong></p>
-<p>回答：<em>不是很清楚，希望给出参考链接。谢谢！</em></p>
+<p>回答：为了增加可解释性</p>
 
 </div>
 </div>
@@ -13104,11 +13102,11 @@ Naive Predictor on validation data:
 <p><strong>描述一个该模型在真实世界的一个应用场景。（你需要为此做点研究，并给出你的引用出处）</strong></p>
 <p>回答：“本文提出了一种新的基于支持向量机手写汉字识别方法 .支持向量机作为一种新的机器学习方法 ,由于其建立在结构风险最小化准则之上 ,而不是仅仅使经验风险达到最小 ,从而使得支持向量分类器具有较好的推广能力。”  《一种基于支持向量机的手写汉字识别方法》 --高学</p>
 <p><strong>这个模型的优势是什么？他什么情况下表现最好？</strong></p>
-<p>回答：在非线性可分问题上表现优秀。<em>第二问没有查到很好的资料，希望给出参考链接，谢谢！</em></p>
+<p>回答：在非线性可分问题上表现优秀；不容易过拟合；内存消耗较少；在维数高时表现最好。</p>
 <p><strong>这个模型的缺点是什么？什么条件下它表现很差？</strong></p>
-<p>回答：1.训练时间长 2.可解释性差。<em>第二问没有查到很好的资料，希望给出参考链接，谢谢！</em></p>
+<p>回答：训练时间长；可解释性差；难调参；</p>
 <p><strong>根据我们当前数据集的特点，为什么这个模型适合这个问题。</strong></p>
-<p>回答：<em>不是很清楚，希望给出参考链接。谢谢！</em></p>
+<p>回答：当前数据集维数较高，所以选用SVM</p>
 
 </div>
 </div>
@@ -14227,13 +14225,13 @@ Final F-score on the validation data: 0.7617
 <tbody>
 <tr>
 <td style="text-align:center">准确率</td>
-<td style="text-align:center">0.7521</td>
+<td style="text-align:center">0.2478</td>
 <td style="text-align:center">0.8760</td>
 <td style="text-align:center">0.8749</td>
 </tr>
 <tr>
 <td style="text-align:center">F-score</td>
-<td style="text-align:center">0.7914</td>
+<td style="text-align:center">0.2917</td>
 <td style="text-align:center">0.7632</td>
 <td style="text-align:center">0.7617</td>
 </tr>
@@ -14247,8 +14245,8 @@ Final F-score on the validation data: 0.7617
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>回答：</strong> <em>很奇怪的是未优化的模型准确率高于优化的模型0.8760 &gt; 0.8749.？？？F-score未优化的模型反而比优化的模型得分高？？？
-这正常吗？</em></p>
+<p><strong>回答：</strong> 
+比未优化的模型差一点，相比与天真预测器要好很多</p>
 
 </div>
 </div>
