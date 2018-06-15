@@ -75,7 +75,7 @@ class LearningAgent(Agent):
             self.trial_num = self.trial_num + 1
 
 #             self.alpha = self.epsilon
-            if self.alpha >0.2:
+            if self.alpha >0.5:
                 self.alpha = self.alpha-0.02
 
         return None
@@ -135,9 +135,11 @@ class LearningAgent(Agent):
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
 
+#         if self.learning:
+#             if not (state in self.Q.keys()):
+#                 self.Q[state] = {None: 0.0, 'forward': 0.0, 'left': 0.0 , 'right': 0.0}
         if self.learning:
-            if not (state in self.Q.keys()):
-                self.Q[state] = {None: 0.0, 'forward': 0.0, 'left': 0.0 , 'right': 0.0}
+          self.Q.setdefault(state, {action: 0.0 for action in self.valid_actions})
 
         return
 
